@@ -139,35 +139,9 @@ mod tests {
   use super::*;
 
   #[test]
-  fn d2_parse() {
-    assert_eq!( Entry::from_str("A Y"), Ok(Entry { them: Play::Rock, me: Play::Paper }));
-    assert_eq!( Entry::from_str("B Z"), Ok(Entry { them: Play::Paper, me: Play::Scissors }));
-    assert_eq!( Entry::from_str("C Z"), Ok(Entry { them: Play::Scissors, me: Play::Scissors }));
-    assert!( Entry::from_str("A ").is_err());
-  }
-
-  #[test]
-  fn d2_trivial() {
-    let input = vec![];
-    assert_eq!(run(input.into_iter()), Ok((0,0)));
-  }
-
-  #[test]
-  fn d2_example() {
-    let input : Vec<String> = vec!["A Y", "B X", "C Z"].into_iter().map(|s| s.to_string()).collect();
-    assert_eq!(run(input.into_iter()), Ok((12, 0)));
-  }
-
-  #[test]
-  fn d2_fake() {
-    let input = file_lines(input_file);
-    assert_eq!(run(input.into_iter()), Ok((9977, 0)));
-  }
-
-  #[test]
   fn d2_real() {
     let input = file_lines(input_file);
-    assert_eq!(run(input.into_iter()), Ok((9977, 0)));
+    assert_eq!(run(input.into_iter()), Ok((11258, 0)));
   }
 
 }
