@@ -35,9 +35,9 @@ impl Item {
         let c = self.item_code;
         if c.is_ascii() {
             if self.item_code.is_ascii_lowercase() {
-                (c as i32 - 'a' as i32 + 1)
+                c as i32 - 'a' as i32 + 1
             } else if self.item_code.is_ascii_uppercase() {
-                (c as i32 - 'A' as i32 + 1 + 26)
+                c as i32 - 'A' as i32 + 1 + 26
             } else {
                 0
             }
@@ -102,6 +102,7 @@ pub fn run_2<'a, I>(mut lines: I) -> Result<i32, &'static str>
     Ok(total_group_priority)
 }
 
+/*
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -158,3 +159,4 @@ mod tests {
         assert_eq!(run_2(input.into_iter()).unwrap(), 2644);
     }
 }
+*/
