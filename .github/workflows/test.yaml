@@ -11,15 +11,12 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: cachix/install-nix-action@v18
-      with:
-        extra_nix_config: |
-          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          system-features = nixos-test benchmark big-parallel kvm
-    - id: buildit
+  steps:
+    - name: Set the value
+      id: step_one
       run: |
-        echo "NAME=greg" >> $GITHUB_OUTPUT
-    - run: |
-        echo "Name  is: ${{ env.NAME }}"
-
+        echo "action_state=yellow" >> $GITHUB_ENV
+    - name: Use the value
+      id: step_two
+      run: |
+        echo "${{ env.action_state }}" # This will output 'yellow'
