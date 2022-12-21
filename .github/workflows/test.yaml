@@ -2,7 +2,6 @@ name: "Test"
 on:
   pull_request:
   push:
-  commit:
 
 env:
   REGISTRY: ghcr.io
