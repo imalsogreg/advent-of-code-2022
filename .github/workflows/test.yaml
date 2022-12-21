@@ -13,12 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: cachix/install-nix-action@v18
-      id: buildit
       with:
         extra_nix_config: |
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
           system-features = nixos-test benchmark big-parallel kvm
-    - run: |
+    - id: buildit
+      run: |
         echo "NAME=greg" >> $GITHUB_OUTPUT
     - run: |
         echo "Name  is: ${{ steps.buildit.outputs.NAME.value }}"
