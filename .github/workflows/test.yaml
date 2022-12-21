@@ -22,5 +22,5 @@ jobs:
     - run: |
         echo "NAME=greg" >> $GITHUB_OUTPUT
     - run: |
-        echo "Name is: ${{ steps.buildit.outputs.NAME.value }}"
+        echo "Name  is: ${{ steps.buildit.outputs.NAME.value }}"
 
