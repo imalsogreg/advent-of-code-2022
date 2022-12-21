@@ -1,0 +1,25 @@
+name: "Test"
+on:
+  pull_request:
+  push:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE: hello-container
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: cachix/install-nix-action@v18
+      id: buildit
+      with:
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          system-features = nixos-test benchmark big-parallel kvm
+    - run: |
+        echo "NAME=greg" >> $GITHUB_OUTPUT
+    - run: |
+        echo "Name is: ${{ steps.buildit.outputs.NAME }}"
+
